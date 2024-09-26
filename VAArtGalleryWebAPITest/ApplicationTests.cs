@@ -8,7 +8,7 @@ namespace VAArGalleryWebAPITest
     public class Tests
     {
         ArtGallery g1 = new ArtGallery("Gallery One", "Beja", "Baltazar Braz");
-        ArtGallery g2 = new ArtGallery("Gallery Two", "BraganÁa", "Bernardo Beltr„o");
+        ArtGallery g2 = new ArtGallery("Gallery Two", "Bragan√ßa", "Bernardo Beltr√£o");
         ArtWork a1 = new ArtWork("obra 1", "artista 1", 1900, 1000);
         ArtWork a2 = new ArtWork("obra 2", "artista 1", 1910, 1500);
         ArtWork a3 = new ArtWork("obra 3", "artista 2", 1920, 2000);

@@ -24,5 +24,15 @@ namespace VAArtGalleryWebAPI.WebApi.Controllers
         {
             return StatusCode(StatusCodes.Status500InternalServerError, "Alguém vai ter de o implementar :)");
         }
+
+        /// <summary>
+        /// Detela um registo usando o identificador "ID"
+        /// </summary>
+        /// <param name="id"></param>
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<CreateArtGalleryResult>> Delete(string id)
+        {
+            return Ok($"Removido o id: {id}");
+        }
     }
 }
