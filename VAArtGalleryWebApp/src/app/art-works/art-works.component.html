@@ -1,13 +1,17 @@
-<div *ngIf="gallery">
+<a href="/" id="back-link"><mat-icon>arrow_back</mat-icon></a>
+<div *ngIf="gallery" id="art-works-display">
     <h2>{{ gallery.name }} - {{ gallery.city }}</h2>
     <p>Gerente: {{ gallery.manager }}</p>
   
     <div class="artworks-list" *ngIf="gallery.artWorksOnDisplay?.length">
       <div *ngFor="let artwork of gallery.artWorksOnDisplay" class="artwork-item">
-        <h3>{{ artwork.name }}</h3>
-        <p>Autor: {{ artwork.author }}</p>
-        <p>Ano de criação: {{ artwork.creationYear }}</p>
-        <p>Preço: {{ artwork.askPrice | currency:'EUR' }}</p>
+        <img src="https://picsum.photos/200" alt="{{artwork.name}} picture" class="card-img">
+        <div class="card-texts">
+          <h3>{{ artwork.name }}</h3>
+          <span class="author">Autor: {{ artwork.author }}</span>
+          <p>Preço: <strong>{{ artwork.askPrice | currency:'EUR' }}</strong></p>
+          <span>Ano de criação: <strong>{{ artwork.creationYear }}</strong></span>
+        </div>
       </div>
     </div>
   

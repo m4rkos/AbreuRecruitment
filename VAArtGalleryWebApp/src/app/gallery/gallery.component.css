@@ -1,0 +1,11 @@
+.edit {
+    padding-right: 1rem;
+}
+
+#art-abreu {
+    max-width: 120px;
+    border-radius: 50%;
+    top: -20px;
+    position: absolute;
+    right: -15px;
+}

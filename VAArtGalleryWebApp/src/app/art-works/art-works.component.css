@@ -1,19 +1,56 @@
 .gallery-list, .artworks-list {
-    display: flex;
-    flex-wrap: wrap;
-  }
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: start;
+}
   
-  .gallery-item, .artwork-item {
-    width: 200px;
-    margin: 10px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
+.gallery-item, .artwork-item {
+  min-width: 30%;
+  max-width: 300px;
+  margin: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
+}
+
+.artwork-item span {
+  font-size: 14px;
+}
   
-  .gallery-item:hover, .artwork-item:hover {
-    background-color: #f0f0f0;
-  }
+.card-texts {
+  position: relative;
+  padding: 10px 15px;
+}
+
+.card-texts .author {
+  position: absolute;
+  top: -30px;
+  left: 10px;
+  background: #fff;
+  padding: 10px;
+  font-size: 11.5px;
+}
+
+.gallery-item:hover, .artwork-item:hover {
+  background-color: #f0f0f0;
+}
   
+#art-works-display {
+  width: 100%;
+}
+
+.card-img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+}
+
+#back-link {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  text-decoration: none;
+  color: black;
+}
