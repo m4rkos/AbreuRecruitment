@@ -1,0 +1,1 @@
+G:\_dotnet\test_coding\AbreuRecruitment\VAArtGalleryWebApp\obj\Debug\VAArtGalleryWebApp.esproj.CoreCompileInputs.cache

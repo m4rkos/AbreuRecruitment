@@ -7,11 +7,13 @@ import { GalleryComponent } from './gallery/gallery.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import { HttpClientModule } from '@angular/common/http';
+import { ArtWorksComponent } from './art-works/art-works.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    GalleryComponent
+    GalleryComponent,
+    ArtWorksComponent
   ],
   imports: [
     BrowserModule,

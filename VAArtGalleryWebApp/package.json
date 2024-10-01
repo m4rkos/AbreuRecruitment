@@ -23,6 +23,7 @@
     "jest-editor-support": "*",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
+    "vaart-gallery-web-app": "file:",
     "zone.js": "~0.14.3"
   },
   "devDependencies": {

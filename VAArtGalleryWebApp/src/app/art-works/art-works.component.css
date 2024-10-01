@@ -1,0 +1,19 @@
+.gallery-list, .artworks-list {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .gallery-item, .artwork-item {
+    width: 200px;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .gallery-item:hover, .artwork-item:hover {
+    background-color: #f0f0f0;
+  }
+  

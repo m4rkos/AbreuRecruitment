@@ -1,0 +1,16 @@
+<div *ngIf="gallery">
+    <h2>{{ gallery.name }} - {{ gallery.city }}</h2>
+    <p>Gerente: {{ gallery.manager }}</p>
+  
+    <div class="artworks-list" *ngIf="gallery.artWorksOnDisplay?.length">
+      <div *ngFor="let artwork of gallery.artWorksOnDisplay" class="artwork-item">
+        <h3>{{ artwork.name }}</h3>
+        <p>Autor: {{ artwork.author }}</p>
+        <p>Ano de criação: {{ artwork.creationYear }}</p>
+        <p>Preço: {{ artwork.askPrice | currency:'EUR' }}</p>
+      </div>
+    </div>
+  
+    <p *ngIf="!gallery.artWorksOnDisplay?.length">Nenhuma obra de arte disponível nesta galeria.</p>
+</div>
+  
