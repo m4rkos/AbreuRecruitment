@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Gallery, GalleryAndArtWorks } from './models';
 
@@ -16,5 +16,9 @@ export class GalleryService {
 
   getGalleryById(id: string): Observable<GalleryAndArtWorks[]> {
     return this.http.get<GalleryAndArtWorks[]>(`${this.baseUrl}/get-data-by-id/${id}`);
+  }
+
+  getRandomImage(urlImg: string): Observable<HttpResponse<Blob>> {
+    return this.http.get(urlImg, { observe: 'response', responseType: 'blob' });
   }
 }

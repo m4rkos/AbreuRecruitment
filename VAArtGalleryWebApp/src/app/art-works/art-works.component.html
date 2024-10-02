@@ -4,8 +4,8 @@
     <p>Gerente: {{ gallery.manager }}</p>
   
     <div class="artworks-list" *ngIf="gallery.artWorksOnDisplay?.length">
-      <div *ngFor="let artwork of gallery.artWorksOnDisplay" class="artwork-item">
-        <img src="https://picsum.photos/200" alt="{{artwork.name}} picture" class="card-img">
+      <div *ngFor="let artwork of gallery.artWorksOnDisplay; index as i;" class="artwork-item">
+        <img [src]="randomImg[i]" alt="{{artwork.name}} picture" class="card-img">
         <div class="card-texts">
           <h3>{{ artwork.name }}</h3>
           <span class="author">Autor: {{ artwork.author }}</span>

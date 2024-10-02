@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { GalleryService } from '../gallery/gallery.service';
 import { GalleryAndArtWorks } from '../gallery/models';
+import { count } from 'rxjs';
 
 @Component({
   selector: 'app-art-works',
@@ -10,6 +11,7 @@ import { GalleryAndArtWorks } from '../gallery/models';
 })
 export class ArtWorksComponent implements OnInit {
   gallery!: GalleryAndArtWorks;
+  randomImg: string[] = []; 
 
   constructor(
     private route: ActivatedRoute,
@@ -28,10 +30,31 @@ export class ArtWorksComponent implements OnInit {
       next: (data) => {
         console.log('Dados recebidos:', data); // Verifique os dados recebidos no console
         this.gallery = data[0];
+        this.loadImage(this.gallery.artWorksOnDisplay?.length ?? 0);
       },
       error: (error) => {
         console.error('Erro ao carregar galeria', error);
       }
     });
   }
+
+  loadImage(amount: number): void {
+    let imgLinks = [
+      'https://picsum.photos/200', 
+      'https://random.imagecdn.app/500/150'
+    ];
+
+    for (let i = 0; i < amount; i++) {
+      this.galleryService.getRandomImage(imgLinks[0]).subscribe(img => {
+        if (!this.randomImg.includes(img.url as string)) {
+          this.randomImg.push(img.url as string);
+        } else {
+          this.galleryService.getRandomImage(imgLinks[1]).subscribe(img2 => 
+            this.randomImg.push(img2.url as string)
+          )
+        }
+      });
+    }
+  }
+
 }
