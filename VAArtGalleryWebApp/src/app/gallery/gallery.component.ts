@@ -23,7 +23,7 @@ export class GalleryComponent implements OnInit {
   }
 
   editGalleryClick(galleryId: string) {
-    console.log(galleryId);
+    this.router.navigate(['/art-galleries-edit', galleryId]);
   }
 
   openArtWorksList(galleryId: string): void {

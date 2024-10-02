@@ -8,12 +8,14 @@ import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import { HttpClientModule } from '@angular/common/http';
 import { ArtWorksComponent } from './art-works/art-works.component';
+import { GalleryEditComponent } from './gallery-edit/gallery-edit.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     GalleryComponent,
-    ArtWorksComponent
+    ArtWorksComponent,
+    GalleryEditComponent
   ],
   imports: [
     BrowserModule,

@@ -22,6 +22,7 @@
 .card-texts {
   position: relative;
   padding: 10px 15px;
+  color: #54667a;
 }
 
 .card-texts .author {
@@ -53,4 +54,12 @@
   left: 1rem;
   text-decoration: none;
   color: black;
+}
+
+.price strong {
+  color: #158cba;
+}
+
+h2 {
+  color: #54667a;
 }
