@@ -9,6 +9,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { HttpClientModule } from '@angular/common/http';
 import { ArtWorksComponent } from './art-works/art-works.component';
 import { GalleryEditComponent } from './gallery-edit/gallery-edit.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { GalleryEditComponent } from './gallery-edit/gallery-edit.component';
     AppRoutingModule,
     MatTableModule,
     MatIconModule,
+    FormsModule,
     HttpClientModule
   ],
   providers: [],

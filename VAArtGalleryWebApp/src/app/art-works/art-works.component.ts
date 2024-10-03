@@ -28,7 +28,6 @@ export class ArtWorksComponent implements OnInit {
   loadGallery(id: string): void {
     this.galleryService.getGalleryById(id).subscribe({
       next: (data) => {
-        console.log('Dados recebidos:', data); // Verifique os dados recebidos no console
         this.gallery = data[0];
         this.loadImage(this.gallery.artWorksOnDisplay?.length ?? 0);
       },
