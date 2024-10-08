@@ -17,7 +17,7 @@ namespace VAArtGalleryWebAPI.WebApi.Controllers
         [HttpGet]
         public async Task<ActionResult<List<GetAllArtGalleriesResult>>> GetAllGalleries()
         {
-            var galleries = await mediator.Send(new GetAllArtGalleriesQuery());
+            var galleries = await mediator.Send(new GetAllArtGalleriesQuery(string.Empty));
 
             var result = galleries.Select(g => new GetAllArtGalleriesResult(g.Id, g.Name, g.City, g.Manager, g.ArtWorksOnDisplay?.Count ?? 0)).ToList();
 
@@ -29,9 +29,9 @@ namespace VAArtGalleryWebAPI.WebApi.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet("get-all-data")]
-        public async Task<ActionResult<List<GetAllArtGalleriesAndArtWorksOnDisplay>>> GetAllGallerieAndData()
+        public async Task<ActionResult<List<GetAllArtGalleriesAndArtWorksOnDisplay>>> GetAllGallerieAndData([FromQuery] string? city)
         {
-            var galleries = await mediator.Send(new GetAllArtGalleriesQuery());
+            var galleries = await mediator.Send(new GetAllArtGalleriesQuery(!string.IsNullOrEmpty(city) ? city : string.Empty));
 
             var result = galleries.Select(g => g).ToList();
 
@@ -43,10 +43,10 @@ namespace VAArtGalleryWebAPI.WebApi.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpGet("get-data-by-id/{id}")]
+        [HttpGet("{id}")]
         public async Task<ActionResult<List<GetAllArtGalleriesAndArtWorksOnDisplay>>> GetGalleryById([FromRoute] string id)
         {
-            var galleries = await mediator.Send(new GetAllArtGalleriesQuery());
+            var galleries = await mediator.Send(new GetAllArtGalleriesQuery(string.Empty));
 
             var result = galleries.Select(g => g).Where(i => i.Id == Guid.Parse(id) ).ToList();
 
@@ -71,7 +71,7 @@ namespace VAArtGalleryWebAPI.WebApi.Controllers
         /// <param name="request"></param>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpPost("create-art-works/{id}")]
+        [HttpPost("{id}")]
         public async Task<ActionResult<CreateArtGalleryResult>> CreateArtWorksOnDisplay([FromBody] CreateArtWorkRequest request, [FromRoute] string id)
         {
             var result = await mediator.Send(new CreateArtWorksQuery(request, Guid.Parse(id) ));
@@ -100,7 +100,7 @@ namespace VAArtGalleryWebAPI.WebApi.Controllers
         /// <param name="idArtWork"></param>
         /// <returns></returns>
         /// <exception cref="ArgumentException"></exception>
-        [HttpDelete("{idGallery}/item/{idArtWork}")]
+        [HttpDelete("{idGallery}/{idArtWork}")]
         public async Task<ActionResult<CreateArtGalleryResult>> DeleteItem(string idGallery, string idArtWork)
         {
             var result = await mediator.Send(new DeleteArtWorkItemQuery(Guid.Parse(idGallery), Guid.Parse(idArtWork) ));
@@ -109,5 +109,38 @@ namespace VAArtGalleryWebAPI.WebApi.Controllers
                 ? Ok($"Item Removido com sucesso, id: {idArtWork}") 
                 : throw new ArgumentException($"Erro ao tentar deletar o id: {idArtWork}");
         }
+
+        /// <summary>
+        /// Atualiza um registo usando o identificador "ID"
+        /// </summary>
+        /// <param name="request"></param>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpPut("{id}")]
+        public async Task<ActionResult<CreateArtGalleryResult>> UpdateArtWorksOnDisplay([FromBody] CreateArtWorkRequest request, [FromRoute] string id)
+        {
+            var result = await mediator.Send(new UpdateArtGalleryQuery(Guid.Parse(id)));
+
+            return result == true
+                ? Ok($"ArtWorks Atualizado com sucesso, id: {id}")
+                : throw new ArgumentException($"Erro ao tentar atualizar o id: {id}");
+        }
+
+        ///// <summary>
+        ///// Atualiza um registo usando o identificador "ID" da gallery e do item art work
+        ///// </summary>
+        ///// <param name="idGallery"></param>
+        ///// <param name="idArtWork"></param>
+        ///// <returns></returns>
+        ///// <exception cref="ArgumentException"></exception>
+        //[HttpPut("{idGallery}/item/{idArtWork}")]
+        //public async Task<ActionResult<CreateArtGalleryResult>> UpdateItem(string idGallery, string idArtWork)
+        //{
+        //    var result = await mediator.Send(new UpdateArtWorkItemQuery(Guid.Parse(idGallery), Guid.Parse(idArtWork)));
+
+        //    return result == true
+        //        ? Ok($"Item Atualizado com sucesso, id: {idArtWork}")
+        //        : throw new ArgumentException($"Erro ao tentar atualizar o id: {idArtWork}");
+        //}
     }
 }

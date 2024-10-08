@@ -12,7 +12,7 @@ namespace VAArtGalleryWebAPI.Infrastructure
         {
             cancellationToken.ThrowIfCancellationRequested();
 
-            var galleries = await new ArtGalleryRepository(_filePath).GetAllArtGalleriesAsync(cancellationToken);
+            var galleries = await new ArtGalleryRepository(_filePath).GetAllArtGalleriesAsync(null, cancellationToken);
 
             var gallery = galleries.Find(g => g.Id == artGalleryId) ?? throw new ArgumentException("unknown art gallery", nameof(artGalleryId));
             artWork.Id = Guid.NewGuid();
@@ -33,19 +33,26 @@ namespace VAArtGalleryWebAPI.Infrastructure
             return artWork; 
         }
 
-        public async Task<bool> DeleteAsync(Guid artWorkId, CancellationToken cancellationToken = default)
+        public async Task<bool> DeleteAsync(Guid galleryId, Guid artWorkId, CancellationToken cancellationToken = default)
         {
             cancellationToken.ThrowIfCancellationRequested();
-            var galleries = await new ArtGalleryRepository(_filePath).GetAllArtGalleriesAsync(cancellationToken);
+            var galleries = await new ArtGalleryRepository(_filePath).GetAllArtGalleriesAsync(null, cancellationToken);
 
-            var gallery = galleries.Find(match: g => g.ArtWorksOnDisplay.Any(a => a.Id == artWorkId) )
+            var gallery = galleries?.FirstOrDefault(g => g.Id == galleryId)
                 ?? throw new ArgumentException("unknown gallery art work", nameof(artWorkId));
 
             try
             {
-                galleries.Remove(gallery);
-                await UpdateGalleries(galleries);
-                return true;
+                var artWork = gallery?.ArtWorksOnDisplay?.Find(match: a => a.Id == artWorkId);
+
+                if (artWork != null)
+                {
+                    gallery?.ArtWorksOnDisplay?.Remove(artWork);
+
+                    await UpdateGalleries(galleries);
+                    return true;
+                }
+                return false;
             }
             catch (Exception)
             {
@@ -57,7 +64,7 @@ namespace VAArtGalleryWebAPI.Infrastructure
         {
             cancellationToken.ThrowIfCancellationRequested();
 
-            var galleries = await new ArtGalleryRepository(_filePath).GetAllArtGalleriesAsync(cancellationToken);
+            var galleries = await new ArtGalleryRepository(_filePath).GetAllArtGalleriesAsync(null, cancellationToken);
 
             var gallery = galleries.Find(g => g.Id == artGalleryId) ?? throw new ArgumentException("unknown art gallery", nameof(artGalleryId));
             if (gallery.ArtWorksOnDisplay == null)

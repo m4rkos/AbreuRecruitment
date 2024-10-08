@@ -7,7 +7,7 @@ namespace VAArtGalleryWebAPI.Application.Queries
     {
         public async Task<bool> Handle(DeleteArtWorkItemQuery request, CancellationToken cancellationToken)
         {
-            return await artWorkRepository.DeleteAsync(request.IdArtWork);
+            return await artWorkRepository.DeleteAsync(request.IdGallery, request.IdArtWork);
         }
     }
 }

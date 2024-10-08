@@ -25,7 +25,7 @@ namespace VAArGalleryWebAPITest
         [Test]
         public async Task Test_Returns_the_galleries_successfully()
         {
-            var r = await new GetAllArtGalleriesQueryHandler(NormalArtGalleryRepositoryMock().Object).Handle(new GetAllArtGalleriesQuery(), CancellationToken.None);
+            var r = await new GetAllArtGalleriesQueryHandler(NormalArtGalleryRepositoryMock().Object).Handle(new GetAllArtGalleriesQuery(g1.City), CancellationToken.None);
             
             Assert.That(r, Is.Not.Null);
             Assert.That(r.Count, Is.EqualTo(2));
@@ -69,7 +69,7 @@ namespace VAArGalleryWebAPITest
         private Mock<IArtGalleryRepository> NormalArtGalleryRepositoryMock()
         {
             var mock = new Mock<IArtGalleryRepository>(MockBehavior.Strict);
-            mock.Setup(m => m.GetAllArtGalleriesAsync(It.IsAny<CancellationToken>())).ReturnsAsync([g1, g2]);
+            mock.Setup(m => m.GetAllArtGalleriesAsync(g1.City, It.IsAny<CancellationToken>())).ReturnsAsync([g1, g2]);
 
             return mock;
         }

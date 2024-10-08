@@ -8,7 +8,11 @@ namespace VAArtGalleryWebAPI.Application.Queries
     {
         public async Task<List<ArtGallery>> Handle(GetAllArtGalleriesQuery request, CancellationToken cancellationToken)
         {
-            return await artGalleryRepository.GetAllArtGalleriesAsync(cancellationToken);
+            var city = !string.IsNullOrEmpty(request.City) 
+                ? request.City 
+                : string.Empty;
+
+            return await artGalleryRepository.GetAllArtGalleriesAsync(city, cancellationToken);
         }
     }
 }

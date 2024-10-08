@@ -8,7 +8,7 @@ namespace VAArtGalleryWebAPI.Infrastructure
     {
         private readonly string _filePath = filePath;
 
-        public async Task<List<ArtGallery>> GetAllArtGalleriesAsync(CancellationToken cancellationToken = default)
+        public async Task<List<ArtGallery>> GetAllArtGalleriesAsync(string? city = null, CancellationToken cancellationToken = default)
         {
             return await Task.Run(() =>
             {
@@ -16,7 +16,14 @@ namespace VAArtGalleryWebAPI.Infrastructure
 
                 using StreamReader sr = new(_filePath);
                 string galleriesJson = sr.ReadToEnd();
-                return JsonSerializer.Deserialize<List<ArtGallery>>(galleriesJson) ?? [];
+                var result = JsonSerializer.Deserialize<List<ArtGallery>>(galleriesJson) ?? [];
+
+                if (!string.IsNullOrEmpty(city))
+                {
+                    return result.Where(a => string.Equals(a.City, city, StringComparison.OrdinalIgnoreCase) ).ToList();
+                }
+
+                return result;
             });
         }
 
@@ -24,14 +31,14 @@ namespace VAArtGalleryWebAPI.Infrastructure
         {
             cancellationToken.ThrowIfCancellationRequested();
 
-            var galleries = await GetAllArtGalleriesAsync(cancellationToken);
+            var galleries = await GetAllArtGalleriesAsync(null, cancellationToken);
             return galleries.Find(g => g.Id == id);
         }
 
         public async Task<bool> DeleteArtGalleryByIdAsync(Guid galleryId, CancellationToken cancellationToken = default)
         {
             cancellationToken.ThrowIfCancellationRequested();
-            var galleries = await new ArtGalleryRepository(_filePath).GetAllArtGalleriesAsync(cancellationToken);
+            var galleries = await new ArtGalleryRepository(_filePath).GetAllArtGalleriesAsync(null, cancellationToken);
 
             var gallery = galleries.Find(match: g => g.Id == galleryId)
                 ?? throw new ArgumentException("unknown gallery id ", nameof(galleryId));
@@ -57,7 +64,7 @@ namespace VAArtGalleryWebAPI.Infrastructure
         {
             cancellationToken.ThrowIfCancellationRequested();
 
-            var galleries = await GetAllArtGalleriesAsync(cancellationToken);
+            var galleries = await GetAllArtGalleriesAsync(null, cancellationToken);
 
             Console.WriteLine(artGallery.Name);
 
