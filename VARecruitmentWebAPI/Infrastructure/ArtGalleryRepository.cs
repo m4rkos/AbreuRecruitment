@@ -9,7 +9,7 @@ namespace VAArtGalleryWebAPI.Infrastructure
     {
         private readonly string _filePath = filePath;
 
-        public async Task<List<ArtGallery>> GetAllArtGalleriesAsync(string? city = null, CancellationToken cancellationToken = default)
+        public async Task<List<ArtGallery>> GetAllArtGalleriesAsync(string? city, CancellationToken cancellationToken = default)
         {
             return await Task.Run(() =>
             {

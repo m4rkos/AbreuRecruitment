@@ -30,9 +30,9 @@ export class GalleryComponent implements OnInit {
   @ViewChild(MatSort) sort!: MatSort;
 
   constructor(
-    private galleryService: GalleryService, 
-    private router: Router,
-    private cdr: ChangeDetectorRef
+    private readonly galleryService: GalleryService, 
+    private readonly router: Router,
+    private readonly cdr: ChangeDetectorRef
   ) {
     // Customiza o filtro para levar em conta a propriedade 'city'
     this.galleries.filterPredicate = (data: Gallery, filter: string) => {
@@ -61,6 +61,21 @@ export class GalleryComponent implements OnInit {
 
   editGalleryClick(galleryId: string) {
     this.router.navigate(['/art-galleries-edit', galleryId]);
+  }
+
+  removeGalleryClick(id: string) {
+    try {
+      this.galleryService.removeGallery(id).subscribe();
+
+      this.galleries.data = this.galleries.data.filter(a=>a.id !== id);;
+      this.galleries.data = [...this.galleries.data];
+        
+      // Forçar a detecção de mudanças
+      this.cdr.detectChanges();
+    } catch (error) {
+      this.openCreateGalleryModal();
+      alert(`Erro: ${error}`);
+    }
   }
 
   openArtWorksList(galleryId: string): void {

@@ -1,0 +1,177 @@
+[
+  {
+    "Id": "ac16dfc7-1e5b-4b6d-98a3-a63efa6d3bb4",
+    "Name": "O pincel",
+    "City": "Lisboa",
+    "Manager": "Luisa Lopes",
+    "ArtWorksOnDisplay": [
+      {
+        "Id": "4ea72d5b-ef7c-4492-91ca-744ca896a73e",
+        "Name": "A persistência da amnésia",
+        "Author": "Salvador Daqui",
+        "CreationYear": 1931,
+        "AskPrice": 150000000
+      },
+      {
+        "Id": "6b81da53-f5d5-48b5-b9da-5d50129651e5",
+        "Name": "Moças do Tahiti",
+        "Author": "Paulo Gogã",
+        "CreationYear": 1891,
+        "AskPrice": 45000000
+      },
+      {
+        "Id": "47cd0c50-db2c-4234-a30e-83a8d77f49a4",
+        "Name": "Caveira",
+        "Author": "João Miguel Basqueiro",
+        "CreationYear": 1981,
+        "AskPrice": 35000000
+      }
+    ]
+  },
+  {
+    "Id": "a372b4ab-d813-485b-9000-b4931a829101",
+    "Name": "Galeria dos Arcos",
+    "City": "Paço de Arcos",
+    "Manager": "Patricia Patrão",
+    "ArtWorksOnDisplay": [
+      {
+        "Id": "25e46ef2-1b94-4733-af7d-81f90126b94a",
+        "Name": "Sala com mesa azul",
+        "Author": "Vicente de Gog",
+        "CreationYear": 1889,
+        "AskPrice": 160000000
+      },
+      {
+        "Id": "3ec3db14-8eb7-4bad-a808-39ef2ab432b9",
+        "Name": "Por do Sol",
+        "Author": "Claudio Maneta",
+        "CreationYear": 1872,
+        "AskPrice": 48000000
+      },
+      {
+        "Id": "b3c6e267-d62e-43b2-8f7f-1d3476f3022e",
+        "Name": "As meninas de Avinhão",
+        "Author": "Paulinho Picado",
+        "CreationYear": 1907,
+        "AskPrice": 350000000
+      }
+    ]
+  },
+  {
+    "Id": "09cada7c-d7d0-4657-a31c-399c82a9648a",
+    "Name": "Traço Grosso",
+    "City": "Cascais",
+    "Manager": "Carlos Caldeira",
+    "ArtWorksOnDisplay": [
+      {
+        "Id": "f5215aa8-793e-4fcb-8310-29a5d8cf1200",
+        "Name": "Gritaria",
+        "Author": "Eduardo Mocho",
+        "CreationYear": 1893,
+        "AskPrice": 55000000
+      },
+      {
+        "Id": "170662c7-2a4b-45d4-9a64-261e75421877",
+        "Name": "A beijoca",
+        "Author": "Gustavo Clint",
+        "CreationYear": 1908,
+        "AskPrice": 25000000
+      }
+    ]
+  },
+  {
+    "Id": "582f24e8-536d-4b04-96a0-694f1286d539",
+    "Name": "Moderna",
+    "City": "Ericeira",
+    "Manager": "Ernesto Eanes",
+    "ArtWorksOnDisplay": [
+      {
+        "Id": "e36e7ed4-baee-4f50-b6d6-dc4a54bb8757",
+        "Name": "Riscos",
+        "Author": "Jackson Polaco",
+        "CreationYear": 1948,
+        "AskPrice": 50000000
+      },
+      {
+        "Id": "f5792176-20c3-4c78-a3a6-79c5f623c939",
+        "Name": "Bolinhas de sabão",
+        "Author": "Vassili Cansadisky",
+        "CreationYear": 1926,
+        "AskPrice": 15000000
+      },
+      {
+        "Id": "45bdb3d5-9a9e-4e07-9b3a-a5d2a233ad37",
+        "Name": "Quadradinhos à toa",
+        "Author": "Pedro Mandrião",
+        "CreationYear": 1930,
+        "AskPrice": 32000000
+      },
+      {
+        "Id": "d86aa46d-f905-4444-8bf5-94fd8e40172d",
+        "Name": "Estação dos Campos Elisios",
+        "Author": "Manel Carga Leiras",
+        "CreationYear": 1995,
+        "AskPrice": 5000000
+      }
+    ]
+  },
+  {
+    "Id": "fd7250f6-916e-4f5b-a3bd-f8e113e311ed",
+    "Name": "Avenida",
+    "City": "Setúbal",
+    "Manager": "Sara Sampaio",
+    "ArtWorksOnDisplay": [
+
+      {
+        "Id": "6521e56c-f1d3-4976-9a58-1dc685509108",
+        "Name": "Tudo e mais um voilino",
+        "Author": "Amadeus de Coisa-Cardado",
+        "CreationYear": 1917,
+        "AskPrice": 12000000
+      }
+    ]
+  },
+  {
+    "Id": "f423c116-3c28-4c12-b8b6-b978324e1383",
+    "Name": "Pastel",
+    "City": "Lisboa",
+    "Manager": "Leandro Laranjeiro",
+    "ArtWorksOnDisplay": [
+      {
+        "Id": "ed82fb0e-f6d9-4889-913d-50eb67effb34",
+        "Name": "O bochechas",
+        "Author": "Julio Arvores de Fruto",
+        "CreationYear": 1992,
+        "AskPrice": 4000000
+      },
+      {
+        "Id": "b83d6f96-611e-4551-8df5-2cd27e85de14",
+        "Name": "A canção de Lisboa (e Coimbra)",
+        "Author": "José Malhador",
+        "CreationYear": 1910,
+        "AskPrice": 3000000
+      },
+      {
+        "Id": "33ee3062-b53a-4bd1-b356-e5c335d73502",
+        "Name": "Cascata",
+        "Author": "Silva Tripeiro",
+        "CreationYear": 1931,
+        "AskPrice": 150000000
+      },
+      {
+        "Id": "02311145-f8c5-432c-b8c3-ed3bf55ef9e6",
+        "Name": "Uma tipa descascada",
+        "Author": "Paco Goiaba",
+        "CreationYear": 1800,
+        "AskPrice": 53000000
+      },
+      {
+        "Id": "11586fed-2ea3-422d-a7c9-eeb0567081ea",
+        "Name": "O moinho das galhetas",
+        "Author": "Pedro Augusto RePreto",
+        "CreationYear": 1876,
+        "AskPrice": 85000000
+      }
+    ]
+  }
+]

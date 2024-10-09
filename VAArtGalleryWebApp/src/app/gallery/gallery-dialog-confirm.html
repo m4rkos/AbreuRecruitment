@@ -1,0 +1,8 @@
+<h2 mat-dialog-title>Criar Galeria</h2>
+<mat-dialog-content>
+    <p>Quer mesmo remover:</p>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">Cancelar</button>
+    <button mat-button mat-dialog-close cdkFocusInitial [mat-dialog-close]="{name: name(), manager: manager(), city: city()}">Sim</button>
+</mat-dialog-actions>

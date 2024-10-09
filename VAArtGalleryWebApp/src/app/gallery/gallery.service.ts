@@ -27,4 +27,10 @@ export class GalleryService {
       headers: {'Content-Type':'application/json'}
     });
   }
+
+  removeGallery(id: string): Observable<void> {
+    return this.http.delete<void>(`${this.baseUrl}/${id}`, {
+      headers: {'Content-Type':'application/json'}
+    });
+  }
 }
