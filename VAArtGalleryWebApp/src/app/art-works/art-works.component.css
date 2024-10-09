@@ -63,3 +63,7 @@
 h2 {
   color: #54667a;
 }
+
+a {
+  cursor: pointer;
+}

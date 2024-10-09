@@ -26,6 +26,10 @@ export class GalleryEditComponent implements OnInit {
     }
   }
 
+  backHome() {
+    this.router.navigate(['/']);
+  }
+
   loadGallery(id: string): void {
     this.galleryService.getGalleryById(id).subscribe({
       next: (data) => {

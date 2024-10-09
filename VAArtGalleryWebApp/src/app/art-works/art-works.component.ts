@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { GalleryService } from '../gallery/gallery.service';
 import { GalleryAndArtWorks } from '../gallery/models';
 import { count } from 'rxjs';
@@ -14,8 +14,9 @@ export class ArtWorksComponent implements OnInit {
   randomImg: string[] = []; 
 
   constructor(
-    private route: ActivatedRoute,
-    private galleryService: GalleryService
+    private readonly route: ActivatedRoute,
+    private readonly router: Router,
+    private readonly galleryService: GalleryService
   ) {}
 
   ngOnInit(): void {
@@ -23,6 +24,10 @@ export class ArtWorksComponent implements OnInit {
     if (galleryId) {
       this.loadGallery(galleryId);
     }
+  }
+
+  backHome() {
+    this.router.navigate(['/']);
   }
 
   loadGallery(id: string): void {

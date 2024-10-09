@@ -1,4 +1,4 @@
-<a href="/" id="back-link" title="voltar para o inicio"><mat-icon>arrow_back</mat-icon></a>
+<a (click)="backHome()" id="back-link" title="voltar para o inicio"><mat-icon>arrow_back</mat-icon></a>
 <div *ngIf="gallery" id="art-works-display">
     <h2>{{ gallery.name }} - {{ gallery.city }}</h2>
     <p>Gerente: {{ gallery.manager }}</p>
