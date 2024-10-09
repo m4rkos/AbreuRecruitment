@@ -1,0 +1,20 @@
+<h2 mat-dialog-title>Criar Galeria</h2>
+<mat-dialog-content>
+    <p>Preencha todos os inputs a seguir:</p>
+    <mat-form-field style="width:100% !important">
+        <mat-label>Nome</mat-label>
+        <input matInput [(ngModel)]="name" />
+    </mat-form-field>
+    <mat-form-field style="width:47% !important; margin-right: 6%">
+        <mat-label>Gerente</mat-label>
+        <input matInput [(ngModel)]="manager" />
+    </mat-form-field>
+    <mat-form-field style="width:47% !important">
+        <mat-label>Cidade</mat-label>
+        <input matInput [(ngModel)]="city" />
+    </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">Cancelar</button>
+    <button mat-button mat-dialog-close cdkFocusInitial [mat-dialog-close]="{name: name(), manager: manager(), city: city()}">Registar</button>
+</mat-dialog-actions>

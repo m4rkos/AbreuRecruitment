@@ -22,3 +22,17 @@ export interface ArtWorksOnDisplay {
   creationYear: number
   askPrice: number
 }
+
+// Create Gallery
+export interface GalleryRequest {
+  name: string;
+  city: string;
+  manager: string;
+}
+
+export interface GalleryResponse {
+  id: string;
+  name: string;
+  city: string;
+  manager: string;
+}
