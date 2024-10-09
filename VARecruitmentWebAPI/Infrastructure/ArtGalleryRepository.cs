@@ -1,6 +1,7 @@
 ﻿using System.Text.Json;
 using VAArtGalleryWebAPI.Domain.Interfaces;
 using VAArtGalleryWebAPI.Domain.Entities;
+using VAArtGalleryWebAPI.WebApi.Models;
 
 namespace VAArtGalleryWebAPI.Infrastructure
 {
@@ -46,13 +47,7 @@ namespace VAArtGalleryWebAPI.Infrastructure
             try
             {
                 galleries.Remove(gallery);
-                return await Task.Run(() =>
-                {
-                    using TextWriter tw = new StreamWriter(_filePath, false);
-                    tw.Write(JsonSerializer.Serialize(galleries));
-
-                    return true;
-                });
+                return await WriteDB(galleries);
             }
             catch (Exception)
             {
@@ -78,7 +73,50 @@ namespace VAArtGalleryWebAPI.Infrastructure
 
                 return artGallery;
             });
+        }
 
+        public async Task<bool> UpdateGallery(Guid idGallery, CreateArtGalleryRequest request, CancellationToken cancellationToken = default)
+        {
+            cancellationToken.ThrowIfCancellationRequested();
+            var galleries = await new ArtGalleryRepository(_filePath).GetAllArtGalleriesAsync(null, cancellationToken);
+
+            try
+            {
+                var gallery = galleries.Find(match: g => g.Id == idGallery)
+                    ?? throw new ArgumentException("unknown gallery id ", nameof(idGallery));
+                
+                var galleryIndex = galleries.IndexOf(gallery);
+
+                gallery.City = request.City;
+                gallery.Name = request.Name;
+                gallery.Manager = request.Manager;
+
+                galleries[galleryIndex] = gallery;
+
+                return await WriteDB(galleries);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        private async Task<bool> WriteDB(IEnumerable<ArtGallery>? galleries)
+        {
+            try
+            {
+                return await Task.Run(() =>
+                {
+                    using TextWriter tw = new StreamWriter(_filePath, false);
+                    tw.Write(JsonSerializer.Serialize(galleries));
+
+                    return true;
+                });
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
     }
 }

@@ -117,9 +117,9 @@ namespace VAArtGalleryWebAPI.WebApi.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpPut("{id}")]
-        public async Task<ActionResult<CreateArtGalleryResult>> UpdateArtWorksOnDisplay([FromBody] CreateArtWorkRequest request, [FromRoute] string id)
+        public async Task<ActionResult<CreateArtGalleryResult>> UpdateArtgallery([FromBody] CreateArtGalleryRequest request, [FromRoute] string id)
         {
-            var result = await mediator.Send(new UpdateArtGalleryQuery(Guid.Parse(id)));
+            var result = await mediator.Send(new UpdateArtGalleryQuery(Guid.Parse(id), request));
 
             return result == true
                 ? Ok($"ArtWorks Atualizado com sucesso, id: {id}")
